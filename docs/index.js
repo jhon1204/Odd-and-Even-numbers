@@ -1,20 +1,23 @@
-document.getElementById("myButton").onclick = () => {
-  let arr;
-  try {
-    arr = JSON.parse(document.getElementById("myArray").value);
-    if (!Array.isArray(arr)) {
+try {
+  document.getElementById("myButton").onclick = () => {
+    let arr;
+    try {
+      arr = JSON.parse(document.getElementById("myArray").value);
+      if (!Array.isArray(arr)) {
+        document.getElementById("result").innerText =
+          "Please, insert a correct array";
+        return;
+      }
+    } catch (error) {
       document.getElementById("result").innerText =
         "Please, insert a correct array";
       return;
     }
-  } catch (error) {
-    document.getElementById("result").innerText =
-      "Please, insert a correct array";
-    return;
-  }
-  console.log(arr);
-  document.getElementById("result").innerText = "[" + sortEvenNOdd(arr) + "]";
-};
+    document.getElementById("result").innerText = "[" + sortEvenNOdd(arr) + "]";
+  };
+} catch (error) {
+  console.log("Running in console");
+}
 
 function sortEvenNOdd(arr) {
   const arrCopy = [...arr];
